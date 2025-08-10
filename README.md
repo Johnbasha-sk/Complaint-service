@@ -7,8 +7,8 @@ A microservice-based complaint management system for municipalities built with S
 The system consists of three main components:
 
 1. **Eureka Server** (Port 8761) - Service Discovery Server
-2. **User Service** (Port 8081) - Authentication, authorization, and user management
-3. **Complaint Service** (Port 8082) - Complaint and comment management
+2. **User Service** (Port 8081) - Authentication, authorization, user management, and web UI
+3. **Complaint Service** (Port 8082) - Complaint and comment management API
 
 ## Features
 
@@ -88,11 +88,12 @@ mvn spring-boot:run
 ```
 Access Eureka Dashboard: http://localhost:8761
 
-#### 2. Start User Service (if available)
+#### 2. Start User Service
 ```bash
 cd user-service
 mvn spring-boot:run
 ```
+Access User Service: http://localhost:8081
 
 #### 3. Start Complaint Service
 ```bash
@@ -237,9 +238,55 @@ complaint-service/
     └── application.yml  # Application configuration
 ```
 
+## User Service Features
+
+### Web Interface
+- **Modern UI**: Bootstrap 5 responsive design with custom styling
+- **Role-based Dashboards**: Separate interfaces for Citizens, Staff, and Admin
+- **JWT Authentication**: HTTP-only cookies for secure session management
+- **Real-time Updates**: AJAX-powered complaint management
+
+### Authentication & Authorization
+- **Registration**: Role selection (CITIZEN, STAFF, ADMIN)
+- **Login**: JWT token generation and validation
+- **Role-based Routing**: Automatic redirection based on user role
+- **Secure Logout**: Cookie cleanup and session termination
+
+### Dashboard Features
+
+#### Citizen Dashboard (`/citizen/home`)
+- File new complaints with category selection
+- View personal complaint history
+- Real-time status tracking
+- Statistics dashboard
+
+#### Staff Dashboard (`/staff/home`)
+- View all complaints with filtering
+- Update complaint status
+- Assign departments
+- Complaint statistics overview
+
+#### Admin Dashboard (`/admin/home`)
+- All staff features plus:
+- Delete complaints
+- User management interface
+- System-wide statistics
+
+### Integration with Complaint Service
+- **Eureka Discovery**: Service-to-service communication
+- **JWT Forwarding**: Seamless authentication across services
+- **Real-time Data**: Live complaint updates via REST APIs
+
+## Default Test Accounts
+
+- **Citizen**: `citizen` / `password`
+- **Staff**: `staff` / `password` 
+- **Admin**: `admin` / `password`
+
 ## Development Notes
 
 - No Lombok used - all getters, setters, constructors, and toString() methods are written manually
-- JWT validation is handled by the Complaint Service
+- JWT validation is handled by both User Service (web UI) and Complaint Service (API)
 - Inter-service communication uses Eureka service discovery
 - Database tables are auto-created via JPA with `ddl-auto: update`
+- Modern responsive UI with Bootstrap 5 and Font Awesome icons
