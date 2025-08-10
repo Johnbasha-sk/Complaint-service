@@ -1,0 +1,12 @@
+/workspace/user-service/src/main/java/com/municipal/user/UserServiceApplication.java
+/workspace/user-service/src/main/java/com/municipal/user/controller/AuthController.java
+/workspace/user-service/src/main/java/com/municipal/user/controller/HomeController.java
+/workspace/user-service/src/main/java/com/municipal/user/dto/LoginRequest.java
+/workspace/user-service/src/main/java/com/municipal/user/dto/RegisterRequest.java
+/workspace/user-service/src/main/java/com/municipal/user/model/Role.java
+/workspace/user-service/src/main/java/com/municipal/user/model/User.java
+/workspace/user-service/src/main/java/com/municipal/user/repository/UserRepository.java
+/workspace/user-service/src/main/java/com/municipal/user/security/JwtAuthenticationFilter.java
+/workspace/user-service/src/main/java/com/municipal/user/security/JwtService.java
+/workspace/user-service/src/main/java/com/municipal/user/security/SecurityConfig.java
+/workspace/user-service/src/main/java/com/municipal/user/service/UserService.java
