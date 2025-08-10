@@ -2,7 +2,9 @@
 /workspace/complaint-service/src/main/java/com/municipal/complaint/config/WebConfig.java
 /workspace/complaint-service/src/main/java/com/municipal/complaint/controller/AdminController.java
 /workspace/complaint-service/src/main/java/com/municipal/complaint/controller/CitizenController.java
+/workspace/complaint-service/src/main/java/com/municipal/complaint/controller/LoginController.java
 /workspace/complaint-service/src/main/java/com/municipal/complaint/controller/StaffController.java
+/workspace/complaint-service/src/main/java/com/municipal/complaint/controller/ViewController.java
 /workspace/complaint-service/src/main/java/com/municipal/complaint/dto/AssignDepartmentRequest.java
 /workspace/complaint-service/src/main/java/com/municipal/complaint/dto/CommentRequest.java
 /workspace/complaint-service/src/main/java/com/municipal/complaint/dto/ComplaintRequest.java
