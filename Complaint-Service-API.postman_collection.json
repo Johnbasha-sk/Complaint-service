@@ -1,0 +1,223 @@
+{
+  "info": {
+    "name": "Municipality Complaint Service API",
+    "description": "API collection for testing the Municipality Complaint Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{jwt_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8082",
+      "type": "string"
+    },
+    {
+      "key": "jwt_token",
+      "value": "your-jwt-token-here",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Citizen Endpoints",
+      "item": [
+        {
+          "name": "File Complaint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"category\": \"WATER\",\n    \"description\": \"Water pipe burst on Main Street\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/citizen/complaints",
+              "host": ["{{base_url}}"],
+              "path": ["citizen", "complaints"]
+            }
+          }
+        },
+        {
+          "name": "Get My Complaints",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/citizen/complaints",
+              "host": ["{{base_url}}"],
+              "path": ["citizen", "complaints"]
+            }
+          }
+        },
+        {
+          "name": "Add Comment to My Complaint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"commentText\": \"This is urgent, please address soon\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/citizen/complaints/1/comments",
+              "host": ["{{base_url}}"],
+              "path": ["citizen", "complaints", "1", "comments"]
+            }
+          }
+        },
+        {
+          "name": "Get My Complaint by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/citizen/complaints/1",
+              "host": ["{{base_url}}"],
+              "path": ["citizen", "complaints", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Staff Endpoints",
+      "item": [
+        {
+          "name": "Get All Complaints",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/staff/complaints",
+              "host": ["{{base_url}}"],
+              "path": ["staff", "complaints"]
+            }
+          }
+        },
+        {
+          "name": "Get Complaint by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/staff/complaints/1",
+              "host": ["{{base_url}}"],
+              "path": ["staff", "complaints", "1"]
+            }
+          }
+        },
+        {
+          "name": "Assign Department",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"assignedDepartment\": \"Water Department\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/staff/complaints/1/assign",
+              "host": ["{{base_url}}"],
+              "path": ["staff", "complaints", "1", "assign"]
+            }
+          }
+        },
+        {
+          "name": "Update Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"status\": \"IN_PROGRESS\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/staff/complaints/1/status",
+              "host": ["{{base_url}}"],
+              "path": ["staff", "complaints", "1", "status"]
+            }
+          }
+        },
+        {
+          "name": "Add Comment to Complaint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"commentText\": \"Working on this issue\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/staff/complaints/1/comments",
+              "host": ["{{base_url}}"],
+              "path": ["staff", "complaints", "1", "comments"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Endpoints",
+      "item": [
+        {
+          "name": "Delete Complaint",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/complaints/1",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "complaints", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
